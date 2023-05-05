@@ -53,7 +53,7 @@ ul li a {
 .titulo {
   font-family: 'Anton';
   font-weight: 100;
-  font-size: 220%;
+  font-size: 300%;
   padding-top: 5%;
   color: #353332;
 }
@@ -72,7 +72,10 @@ ul li a {
   font-size: 120%;
   font-weight: 600;
   height: 300px;
-  padding-top: 20%;
+  padding-top: 30%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10%;
 }
 
 .tabua-esmeralda {
@@ -105,14 +108,6 @@ section img {
   font-weight: 600;
 }
 
-.tabua-esmeralda img {
-    max-width:200px;
-    max-height:150px;
-    width: auto;
-    height: auto;
-    border: gray 1px solid;
-}
-
 .tabua-esmeralda span {
   color: #722f37;
   font-weight: 800;
@@ -129,6 +124,20 @@ section img {
 
 .sobrevivendo-inferno span {
   color: #f40000;
+  font-weight: 800;
+}
+
+.acabou-chorare {
+  padding-left: 4%;
+  padding-right: 4%;
+  font-family: 'Oswald';
+  border: gray 1px solid;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.acabou-chorare span {
+  color: #229a00;
   font-weight: 800;
 }
 
