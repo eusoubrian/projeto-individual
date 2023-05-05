@@ -5,9 +5,9 @@ body {
   background-color: #E4E3E2;
   background-repeat: no-repeat;
   background-image: url(../assets/tela-fundo.png);
-  background-size: 100%;
+  background-size: 160%;
   padding: 2% 4%;
-  background-position-y: 30%;
+
 }
 
 * {
@@ -18,19 +18,22 @@ body {
 .img-logo {
   width: 10%;
   margin: 10px;
+  border-radius: 4%;
+  border: 1px gray solid;
 }
 
 .container {
   display: flex;
   width: 100%;
   margin: 10px;
+  border: #9c9796 groove;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   background-color: #aeb0bb;
-  border: #353332 groove;
+  border: black 2px ridge;
 }
 
 .navbar {
@@ -54,8 +57,9 @@ ul li a {
   font-family: 'Anton';
   font-weight: 100;
   font-size: 300%;
-  padding-top: 5%;
+  padding-top: 10%;
   color: #353332;
+  padding-left: 3%;
 }
 
 .titulo p {
@@ -72,7 +76,7 @@ ul li a {
   font-size: 120%;
   font-weight: 600;
   height: 300px;
-  padding-top: 30%;
+  padding-top: 10%;
   display: flex;
   justify-content: space-between;
   gap: 10%;
