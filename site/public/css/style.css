@@ -6,7 +6,8 @@ body {
   background-repeat: no-repeat;
   background-image: url(../assets/tela-fundo.png);
   background-size: cover;
-  padding: 1% 2%;
+  padding: 2% 4%;
+  background-position-y: 30%;
 }
 
 * {
@@ -50,13 +51,36 @@ ul li a {
 .titulo {
   font-family: 'Anton';
   font-weight: 100;
-  font-size: 190%;
+  font-size: 220%;
+  padding-top: 5%;
   color: #353332;
 }
 
 .titulo p {
   font-family: 'Anton';
   font-weight: 100;
-  font-size: 60%;
+  font-size: 80%;
   color: #353332;
+}
+
+#home {
+  padding-left: 4%;
+  padding-right: 4%;
+  font-family: 'Oswald';
+  font-size: 120%;
+  font-weight: 600;
+  height: 300px;
+}
+
+.jorge-ben {
+  padding-left: 4%;
+  padding-right: 4%;
+  font-family: 'Oswald';
+}
+
+.jorge-ben img {
+    max-width:200px;
+    max-height:150px;
+    width: auto;
+    height: auto;
 }
