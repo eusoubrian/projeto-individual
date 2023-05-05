@@ -5,7 +5,7 @@ body {
   background-color: #E4E3E2;
   background-repeat: no-repeat;
   background-image: url(../assets/tela-fundo.png);
-  background-size: cover;
+  background-size: 100%;
   padding: 2% 4%;
   background-position-y: 30%;
 }
@@ -29,6 +29,8 @@ body {
 .header {
   display: flex;
   justify-content: space-between;
+  background-color: #aeb0bb;
+  border: #353332 groove;
 }
 
 .navbar {
@@ -70,17 +72,63 @@ ul li a {
   font-size: 120%;
   font-weight: 600;
   height: 300px;
+  padding-top: 20%;
 }
 
-.jorge-ben {
+.tabua-esmeralda {
   padding-left: 4%;
   padding-right: 4%;
   font-family: 'Oswald';
+  border: gray 1px solid;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 
-.jorge-ben img {
+section img {
     max-width:200px;
     max-height:150px;
     width: auto;
     height: auto;
+    border: gray 1px solid;
 }
+
+.texto-tabua {
+  display: flex;
+  justify-content: space-between;
+  gap: 5%;
+}
+
+.texto-tabua p {
+  text-align: justify;
+  font-size: larger;
+  align-items: center;
+  font-weight: 600;
+}
+
+.tabua-esmeralda img {
+    max-width:200px;
+    max-height:150px;
+    width: auto;
+    height: auto;
+    border: gray 1px solid;
+}
+
+.tabua-esmeralda span {
+  color: #722f37;
+  font-weight: 800;
+}
+
+.sobrevivendo-inferno {
+  padding-left: 4%;
+  padding-right: 4%;
+  font-family: 'Oswald';
+  border: gray 1px solid;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.sobrevivendo-inferno span {
+  color: #f40000;
+  font-weight: 800;
+}
+
