@@ -29,7 +29,7 @@ body {
   border: #9c9796 groove;
 }
 
-.header {
+.header:hover {
   display: flex;
   justify-content: space-between;
   background-color: #aeb0bb;

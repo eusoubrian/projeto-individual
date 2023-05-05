@@ -5,7 +5,6 @@ body {
     background-image: url(../assets/fundo-login);
 }
 form {
-    background-color: #fff;
     border-radius: 10px;
     padding: 20px;
     width: 300px;
@@ -13,20 +12,20 @@ form {
     margin-top: 50px;
     font-size: 20px;
     font-weight: 700;
-    background-color: #722f37;
+    background-color: #fff;
 }
 label {
     display: block;
     margin-bottom: 5px;
     color: rgb(165, 165, 165);
 }
-input[type="text"], input[type="email"], input[type="password"] {
+input {
     padding: 10px;
     border-radius: 5px;
-    border: none;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     width: 90%;
     margin-bottom: 20px;
+    border: 1px black solid;
 }
 input[type="submit"] {
     background-color: gray;
