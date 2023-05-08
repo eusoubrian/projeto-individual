@@ -10,6 +10,7 @@ body {
 
 }
 
+
 * {
   padding: 0;
   margin: 0;
@@ -132,5 +133,37 @@ section img {
 .span-afro {
   color: #ff4000;
   font-weight: 800;
+}
+
+.titulo-albuns {
+  font-family: 'Anton';
+  font-size: 200%;
+  text-align: center;
+  padding-top: 10%;
+  padding-right: 80%;
+}
+
+.container-albuns {
+  font-family: 'Oswald';
+  font-size: 120%;
+  display: flex;
+  flex-direction: row;
+  gap: 4%;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+footer {
+  background-color: white;
+  position: relative;
+  width: 100%;
 }
 
