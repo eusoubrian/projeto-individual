@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Oswald';
     background-color: #f2f2f2;
     padding: 20px;
   }
@@ -39,8 +41,10 @@ body {
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 140%;
     cursor: pointer;
+    font-family: 'Oswald';
+    font-weight: 800;
   }
 
 
@@ -50,7 +54,7 @@ body {
 
 
   select {
-    font-family: 'Henny Penny', cursive;
+    font-family: 'Anton';
     border-radius: 2%;
     font-size: larger;
     background-color: rgb(56, 196, 56);
