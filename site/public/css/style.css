@@ -153,6 +153,10 @@ section img {
   box-sizing: border-box;
 }
 
+.container-albuns div { 
+  padding-bottom: 2%;
+}
+
 
 
 
