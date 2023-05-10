@@ -148,7 +148,7 @@ section img {
   font-size: 120%;
   display: flex;
   flex-direction: row;
-  gap: 4%;
+  gap: 5%;
   flex-wrap: wrap;
   box-sizing: border-box;
 }
