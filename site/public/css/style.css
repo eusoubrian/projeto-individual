@@ -7,7 +7,7 @@ body {
   background-image: url(../assets/tela-fundo.png);
   background-size: 160%;
   padding: 2% 4%;
-
+  padding-bottom: 0;
 }
 
 
@@ -148,7 +148,7 @@ section img {
   font-size: 120%;
   display: flex;
   flex-direction: row;
-  gap: 5%;
+  gap: 4%;
   flex-wrap: wrap;
   box-sizing: border-box;
 }
@@ -167,7 +167,8 @@ section img {
 
 footer {
   background-color: white;
-  position: relative;
   width: 100%;
+  height: 60vh;
+  border: 1px solid black;
+  border-radius: 2%;
 }
-

@@ -14,10 +14,7 @@ body {
     margin-bottom: 30px;
   }
 
-  form {
-    max-width: 400px;
-    margin: 0 auto;
-  }
+
 
 
   label {
@@ -61,8 +58,3 @@ body {
     cursor: grab;
   }
 
-  div {
-    display: flex;
-    justify-content: center;
-    gap: 10%;
-  }

@@ -8,30 +8,105 @@
 </head>
 
 <body>
-    <form>
+    <div>
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required>
+        <input id="nome_input" required>
 
         <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email_input" required>
 
         <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha" required>
+        <input type="password" id="senha_input" required>
 
         <div>
-            <select name="album" required>
+            <select id="decada">
                 <option value="">Selecione uma década</option>
-                <option value="anos50">Anos 50</option>
-                <option value="anos60">Anos 60</option>
-                <option value="anos70">Anos 70</option>
-                <option value="anos80">Anos 80</option>
-                <option value="anos90">Anos 90</option>
-                <option value="anos2000">Anos 2000</option>
+                <option value="1">Anos 50</option>
+                <option value="2">Anos 60</option>
+                <option value="3">Anos 70</option>
+                <option value="4">Anos 80</option>
+                <option value="5">Anos 90</option>
+                <option value="6">Anos 2000</option>
             </select>
-            <input type="submit" value="Cadastrar">
+            <button onclick="cadastrar()">CADASTRAR PUTA</button>
+        </div>
+        <div id="div_erros_login"></div>
+
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
         </div>
 
-    </form>
+    </div>
 </body>
 
 </html>
+
+<script>
+    function cadastrar() {
+        // aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = nome_input.value;
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+        // var confirmacaoSenhaVar = confirmacao_senha_input.value;
+        var decadaVar = decada.value;
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                decadaServer: decadaVar,
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block";
+
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+
+                limparFormulario();
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>
