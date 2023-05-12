@@ -7,46 +7,39 @@ body {
     background-color: #f2f2f2;
     padding: 20px;
   }
-  
-
-  h1 {
-    text-align: center;
-    margin-bottom: 30px;
-  }
 
 
 
 
   label {
-    display: block;
+    display: flex;
     margin-bottom: 5px;
     font-weight: bold;
   }
 
   input {
-    width: 100%;
+    width: 50%;
     padding: 10px;
     margin-bottom: 20px;
     border-radius: 5px;
-    border: 1px solid #ccc;
     box-sizing: border-box;
   }
 
-  input[type="submit"] {
+  button {
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
-    font-size: 140%;
+    font-size: 100%;
     cursor: pointer;
     font-family: 'Oswald';
     font-weight: 800;
   }
 
 
-  input[type="submit"]:hover {
-    background-color: #45a049;
+  button:hover {
+    background-color: #103011;
   }
 
 
@@ -56,5 +49,10 @@ body {
     font-size: larger;
     background-color: rgb(56, 196, 56);
     cursor: grab;
+  }
+
+  .caixa {
+    display: flex;
+    flex-direction: column;
   }
 
