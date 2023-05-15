@@ -18,7 +18,7 @@ body {
   }
 
   input {
-    width: 50%;
+    width: 80%;
     padding: 10px;
     margin-bottom: 20px;
     border-radius: 5px;
@@ -31,7 +31,7 @@ body {
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
-    font-size: 100%;
+    font-size: 120%;
     cursor: pointer;
     font-family: 'Oswald';
     font-weight: 800;
@@ -46,13 +46,20 @@ body {
   select {
     font-family: 'Anton';
     border-radius: 2%;
-    font-size: larger;
+    font-size: 106%;
     background-color: rgb(56, 196, 56);
     cursor: grab;
+    width: 80%;
   }
 
   .caixa {
     display: flex;
     flex-direction: column;
+
   }
 
+
+  .caixa_enorme {
+    display: flex;
+    justify-content: center;
+  }

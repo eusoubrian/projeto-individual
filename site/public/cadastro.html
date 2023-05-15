@@ -8,26 +8,27 @@
 </head>
 
 <body>
-    <div class="caixa">
-        <label for="nome">Nome:</label>
-        <input id="nome_input" required>
-
-        <label for="email">E-mail:</label>
-        <input type="email" id="email_input" required>
-
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha_input" required>
-        <div>
-            <select id="decada">
-                <option value="">Selecione uma década</option>
-                <option value="1">Anos 50</option>
-                <option value="2">Anos 60</option>
-                <option value="3">Anos 70</option>
-                <option value="4">Anos 80</option>
-                <option value="5">Anos 90</option>
-                <option value="6">Anos 2000</option>
-            </select>
-            <button onclick="cadastrar()">CADASTRAR</button>
+    <div class="caixa_enorme">
+        <div class="caixa">
+            <label for="nome">Nome:</label>
+            <input id="nome_input" required>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email_input" required>
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha_input" required>
+            <div>
+                <select id="decada">
+                    <option value="">Selecione uma década</option>
+                    <option value="1">Anos 50</option>
+                    <option value="2">Anos 60</option>
+                    <option value="3">Anos 70</option>
+                    <option value="4">Anos 80</option>
+                    <option value="5">Anos 90</option>
+                    <option value="6">Anos 2000</option>
+                </select>
+                <p>Não escolheu sua década favorita? <a href="index.html">clique aqui</a></p>
+                <button onclick="cadastrar()">CADASTRAR</button>
+            </div>
         </div>
     </div>
         <div id="div_erros_login"></div>
