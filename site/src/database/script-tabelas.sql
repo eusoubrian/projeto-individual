@@ -19,11 +19,21 @@ fkDecada int,
 		references decada(idDecada)
 );
 
+insert into usuario values
+	(null, 'TESTE', 'teste@gmail.com', 'senha', 1);
+
 create table decada (
 idDecada int primary key auto_increment,
 nome varchar(10)
 );
 
+insert into decada values
+	(null, 'anos 50'),
+	(null, 'anos 60'),
+	(null, 'anos 70'),
+	(null, 'anos 80'),
+	(null, 'anos 90'),
+	(null, 'anos 2000');
 
 create table voto (
 idVoto int,
