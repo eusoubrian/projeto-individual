@@ -5,6 +5,7 @@ body {
   background-repeat: no-repeat;
   background-image: url(../assets/tela-fundo.png);
   background-size: 100vw;
+  overflow-x: hidden;
 }
 
 
@@ -78,13 +79,12 @@ ul li a:hover {
 }
 
 #home {
-  padding-left: 4%;
-  padding-right: 4%;
+  padding-left: 1%;
   font-family: 'Oswald';
   font-size: 120%;
   font-weight: 600;
   height: 300px;
-  padding-top: 6%;
+  padding-top: 2%;
   padding-bottom: 6%;
   display: flex;
   justify-content: space-between;
@@ -180,12 +180,12 @@ section img {
 footer {
   background-color: #f8f8ff;
   width: 100%;
-  height: 60vh;
+  height: 70vh;
+  margin: 4%;
 }
 
 
 .caixa-footer {
-  padding: 4%;
   display: flex;
   justify-content: space-between;
 }
@@ -201,5 +201,4 @@ footer h3 {
   font-weight: 100;
   font-size: 250%;
   color: #353332;
-  padding-left: 2%;
 }
