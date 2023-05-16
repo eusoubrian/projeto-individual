@@ -2,12 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 
 body {
-  background-color: #E4E3E2;
   background-repeat: no-repeat;
   background-image: url(../assets/tela-fundo.png);
-  background-size: 160%;
-  padding: 2% 4%;
-  padding-bottom: 0;
+  background-size: 100vw;
 }
 
 
@@ -29,9 +26,9 @@ body {
 
 .container {
   display: flex;
-  width: 100%;
-  margin: 10px;
-  border: #9c9796 groove;
+  width: 90%;
+  padding: 2% 2% 2%;
+  border: #9c9796;
 }
 
 
@@ -45,6 +42,13 @@ body {
   list-style: none;
   align-items: center;
   gap: 8%;
+}
+
+main {
+  background-color: #E4E3E2;
+  padding-left: 4%;
+  padding-right: 4%;
+  padding-bottom: 10%;
 }
 
 ul li a {
@@ -62,7 +66,8 @@ ul li a:hover {
   font-size: 300%;
   padding-top: 10%;
   color: #353332;
-  padding-left: 3%;
+  padding-left: 5%;
+
 }
 
 .titulo p {
@@ -79,7 +84,8 @@ ul li a:hover {
   font-size: 120%;
   font-weight: 600;
   height: 300px;
-  padding-top: 10%;
+  padding-top: 6%;
+  padding-bottom: 6%;
   display: flex;
   justify-content: space-between;
   gap: 10%;
@@ -105,6 +111,16 @@ section img {
   font-size: larger;
   align-items: center;
   font-weight: 600;
+}
+
+.titulo-melhores {
+  font-family: 'Anton';
+  font-weight: 100;
+  font-size: 250%;
+  display: flex;
+  justify-content: center;
+  color: #353332;
+  padding-bottom: 4%;
 }
 
 .span-esmeralda {
@@ -161,16 +177,29 @@ section img {
 
 
 
-
-
-
-
-
-
 footer {
-  background-color: white;
+  background-color: #f8f8ff;
   width: 100%;
   height: 60vh;
-  border: 1px solid black;
-  border-radius: 2%;
+}
+
+
+.caixa-footer {
+  padding: 4%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.caixa-footer img {
+    width: auto;
+    height: auto;
+    border: gray 1px solid;
+}
+
+footer h3 {
+  font-family: 'Anton';
+  font-weight: 100;
+  font-size: 250%;
+  color: #353332;
+  padding-left: 2%;
 }
