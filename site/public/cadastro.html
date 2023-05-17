@@ -16,6 +16,8 @@
             <input type="email" id="email_input" required>
             <label for="senha">Senha:</label>
             <input type="password" id="senha_input" required>
+            <label for="senha">Confirme a Senha:</label>
+            <input type="password" id="confirmacao_senha_input">
             <div>
                 <select id="decada">
                     <option value="">Selecione uma década</option>
@@ -53,12 +55,12 @@
         var nomeVar = nome_input.value;
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
-        // var confirmacaoSenhaVar = confirmacao_senha_input.value;
+        var confirmacaoSenhaVar = confirmacao_senha_input.value;
         var decadaVar = decada.value;
 
-        if (nomeVar == "" || emailVar == "" || senhaVar == "") {
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || decadaVar == "" || confirmacaoSenhaVar == "") {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            alert('Preencha todos os campos!');
 
 
             return false;
