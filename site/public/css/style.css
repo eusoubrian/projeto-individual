@@ -202,3 +202,28 @@ footer h3 {
   font-size: 250%;
   color: #353332;
 }
+
+.spotify-caixa {
+  position: absolute;
+  padding-left: 50%;
+  font-family: 'Oswald';
+  font-size: 25px;
+}
+
+
+.spotify-img {
+  width: 320px;
+  height: 80px;
+}
+
+#teste-conhecimento {
+  padding-top: 25%;
+}
+
+.conhecimento {
+  font-family: 'Oswald';
+  font-size: 120%;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+}
