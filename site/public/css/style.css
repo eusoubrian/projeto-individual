@@ -1,13 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   background-repeat: no-repeat;
   background-image: url(../assets/tela-fundo.png);
   background-size: 100vw;
-  overflow-x: hidden;
+
 }
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #e228d8 #070d12;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #070d12;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #e228d8;
+  border-radius: 20px;
+  border: 3px solid #070d12;
+}
 
 * {
   padding: 0;
@@ -218,12 +241,43 @@ footer h3 {
 
 #teste-conhecimento {
   padding-top: 25%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .conhecimento {
   font-family: 'Oswald';
-  font-size: 120%;
+  font-size: 140%;
   font-weight: 600;
   display: flex;
   justify-content: center;
+  text-align: center;
+  gap: 5px;
 }
+
+.conhecimento span {
+  color: #ff007f;
+  font-weight: 800;
+}
+
+.conhecimento input {
+  width: 10%;
+}
+
+.mensagem-conhecimento {
+  display: flex;
+  justify-content: center;
+  font-family: 'Oswald';
+  font-size: 180%;
+  font-weight: 900;
+  padding-top: 10px;
+  color: #353332;
+}
+
+.mensagem-conhecimento b {
+  color: #ff007f;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+

@@ -311,6 +311,11 @@
           <p>Um Violão em <br> Primeiro Plano <br> (Rosinha de Valença)</p>
         </div>
 
+        <div>
+          <img src="./assets/imgs/albuns/anos70/a_voz_violao_djavan.jpg" alt=""> <br>
+          <p>A Voz, o Violão, <br> a Música de Djavan <br> (Djavan)</p>
+        </div>
+
       </div>
       
     </section>
@@ -574,13 +579,14 @@
     
     <section id="teste-conhecimento">
       <div class="titulo-melhores">
-        <h2>Você conhece sua cultura?</h2>
+        <h2>CONHECE-TE A TI MESMO</h2>
       </div>
       <div class="conhecimento">
-        <p>Dos 79 álbuns apresentados, quantos você já conhecia antes?</p> <br>
-        <input type="text"> 
+        <p>Dos <span>80 álbuns</span> apresentados, quantos você já conhecia antes?</p> 
+        <input id="ipt_num" type="number"> 
         <button onclick="conhecimento()">PONTUAÇÃO</button>
       </div>
+      <div class="mensagem-conhecimento" id="div_message"></div>
     </section>
   </main>
 
@@ -601,3 +607,31 @@
 </body>
 
 </html>
+
+<script> /* Apenas 25% das pessoas conhecem mais ou igual a  */
+
+  function conhecimento() {
+    var input = Number(ipt_num.value)
+    if(input >= 0 && input < 20) {
+      div_message.innerHTML = `
+      Você conhece ${input} álbuns <br>
+      Você já conhece MENOS que os 25%!!! (ironia)`
+    }else if(input >= 20 && input < 40) {
+      div_message.innerHTML = `
+      Você conhece ${input} álbuns <br>
+      Você se encontra na MÉDIA!!! (tá melhorando...)`
+    }else if(input >= 40 && input < 60) {
+      div_message.innerHTML = `
+      Você conhece ${input} álbuns <br>
+      Você se encontra ACIMA da média!!! (tá melhorando...)`
+    }else if(input >= 60 && input <= 80) {
+      div_message.innerHTML = `
+      Você conhece ${input} álbuns <br>
+      Você é um EXPERT na música popular brasileira!!! (não esperava por essa...)`
+    } else {
+      alert('Insira um número válido')
+      return false
+    }
+  }
+
+</script>
