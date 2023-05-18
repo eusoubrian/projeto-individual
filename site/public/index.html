@@ -582,7 +582,7 @@
         <h2>CONHECE-TE A TI MESMO</h2>
       </div>
       <div class="conhecimento">
-        <p>Dos <span>80 álbuns</span> apresentados, quantos você já conhecia antes?</p> 
+        <p>Dos <span>80 álbuns</span> apresentados, quantos você já conhecia?</p> 
         <input id="ipt_num" type="number"> 
         <button onclick="conhecimento()">PONTUAÇÃO</button>
       </div>
@@ -615,15 +615,15 @@
     if(input >= 0 && input < 20) {
       div_message.innerHTML = `
       Você conhece ${input} álbuns <br>
-      Você já conhece MENOS que os 25%!!! (ironia)`
+      Você já conhece MENOS que os 25% dos entrevistados!!! (ironia)`
     }else if(input >= 20 && input < 40) {
       div_message.innerHTML = `
       Você conhece ${input} álbuns <br>
-      Você se encontra na MÉDIA!!! (tá melhorando...)`
+      Você se encontra na MÉDIA dos entrevistados!!! (tá melhorando...)`
     }else if(input >= 40 && input < 60) {
       div_message.innerHTML = `
       Você conhece ${input} álbuns <br>
-      Você se encontra ACIMA da média!!! (tá melhorando...)`
+      Você se encontra ACIMA da média dos entrevistados!!! (tá melhorando...)`
     }else if(input >= 60 && input <= 80) {
       div_message.innerHTML = `
       Você conhece ${input} álbuns <br>
