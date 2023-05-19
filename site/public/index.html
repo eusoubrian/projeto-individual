@@ -579,7 +579,7 @@
     
     <section id="teste-conhecimento">
       <div class="titulo-melhores">
-        <h2>CONHECE-TE A TI MESMO</h2>
+        <h2>TESTE SEU CONHECIMENTO</h2>
       </div>
       <div class="conhecimento">
         <p>Dos <span>80 álbuns</span> apresentados, quantos você já conhecia?</p> 
@@ -587,6 +587,30 @@
         <button onclick="conhecimento()">PONTUAÇÃO</button>
       </div>
       <div class="mensagem-conhecimento" id="div_message"></div>
+    </section>
+
+    <section id="teste-conhecimento">
+      <hr>
+      <div class="titulo-melhores">
+        <h2>QUEM É O CANTOR?</h2>
+      </div>
+
+      <div class="caixa-enorme-sorteio">
+        <div class="caixa-sorteio">
+          <h4>É o seguinte!</h4> 
+          <p>Quando você clicar no botão Sortear Imagens, vai aparecer algum álbum aleatório</p>
+          <p>Você deverá descobrir quem é o Artista desse álbum (sem espiar)</p>
+        </div>
+      </div>
+
+      <div class="caixa-exibicao">
+        <div id="divImagem"></div>
+        <input id="inputNome" placeholder="Nome do Artista">
+        <button onclick="sorteio()">Sortear imagem</button> 
+        <button onclick="verificar()">Verificar</button>
+        <div id="divResposta"></div>
+      </div>
+
     </section>
   </main>
 
@@ -633,5 +657,62 @@
       return false
     }
   }
+
+  var listaImagens = [
+        {
+            imagem: "<img src='./assets/imgs/albuns/anos70/acabou_chorare_baianos.jpg'>",
+            nome: "novos baianos"
+        },
+        {
+            imagem: "<img src='./assets/imgs/albuns/anos80/dois_legiao.jpg'>",
+            nome: "legião urbana"
+        },
+        {
+            imagem: "<img src='./assets/imgs/albuns/anos80/lanca_perfume_ritalee.jpg'>",
+            nome: "rita lee"
+        },
+        {
+            imagem: "<img src='./assets/imgs/albuns/anos2000/nada_como_um_dia.jpg'>",
+            nome: "racionais mc's"
+        },
+        {
+            imagem: "<img src='./assets/imgs/albuns/anos70/construcao_buarque.jpg'>",
+            nome: "chico buarque"
+        }
+    ]
+
+    var aleatorio = 0
+
+    function posicao(lista) {
+        return parseInt(Math.random() * lista.length)
+    }
+
+    function sorteio() {
+        aleatorio = posicao(listaImagens)
+
+        divImagem.innerHTML = `${listaImagens[aleatorio].imagem}`
+        divResposta.innerHTML = ``;
+        inputNome.value = '';
+    }
+
+    function verificar() {
+        /*         var listaImagens.length = listaImagens.length
+                var aleatorio = parseInt(Math.random() * listaImagens.length) */
+        var nome = listaImagens[aleatorio].nome
+        var iptNome = inputNome.value.toLowerCase()
+
+        if (nome == iptNome) {
+            divResposta.innerHTML = `ACERTOU!!`
+
+            /* setTimeout(() => {
+                sorteio();
+                divResposta.innerHTML = ``;
+            }, 1000) */
+        } else {
+            divResposta.innerHTML = `ERROU!!!`
+
+
+        }
+    }
 
 </script>

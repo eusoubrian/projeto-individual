@@ -26,7 +26,7 @@ body {
   }
 
   button {
-    background-color: #4CAF50;
+    background-color: #696969;
     color: white;
     border: none;
     border-radius: 5px;
@@ -47,13 +47,13 @@ body {
     font-family: 'Anton';
     border-radius: 2%;
     font-size: 106%;
-    background-color: rgb(56, 196, 56);
+    background-color: #696969;
     cursor: grab;
     width: 80%;
   }
 
   .caixa {
-
+    padding-left: 20%;
 
   }
 
@@ -67,4 +67,10 @@ body {
   .caixa-imagem {
     display: flex;
     flex-direction: column;
+  
   }
+
+  .caixa-imagem img {
+    width: 60%;
+  }
+
