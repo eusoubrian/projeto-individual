@@ -348,3 +348,15 @@ footer h3 {
   padding-top: 4%;
 }
 
+#divImagem {
+  display: flex;
+  justify-content: center;
+  padding-top: 5%;
+}
+
+#divImagem img {
+  width: 150%;
+  height: 150%;
+
+}
+
