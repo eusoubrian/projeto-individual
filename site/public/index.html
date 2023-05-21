@@ -777,11 +777,18 @@
       inputNome.value = '';
       divResposta.innerHTML = `ERROU!!!`;
     }
-      if(contador == 5) {
-        Swal.fire(
-        'Parabéns',
-        'Você acabou de acertar 5 SEGUIDAS!!!',
-        ''
+      if(contador == 2) {
+        Swal.fire({
+        title:'Parabéns',
+        text:'Você acabou de acertar 5 SEGUIDAS!!!',
+        color: '#716add',
+        backdrop: `rgba(0,0,123,0.4)
+        url("./assets/imgs/gifs-com-meme-do-bolsonaro-6.gif")
+        left top
+        no-repeat`
+        
+        }
+
       )
       }
       /* setTimeout(() => {

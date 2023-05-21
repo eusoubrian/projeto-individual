@@ -17,7 +17,7 @@ body {
   scrollbar-color: #e228d8 #070d12;
 }
 
-/* Works on Chrome, Edge, and Safari */
+
 *::-webkit-scrollbar {
   width: 12px;
 }
@@ -127,7 +127,6 @@ ul li a:hover {
   padding-top: 10%;
   color: #353332;
   padding-left: 5%;
-
 }
 
 .titulo p {
@@ -359,4 +358,6 @@ footer h3 {
   height: 150%;
 
 }
+
+
 

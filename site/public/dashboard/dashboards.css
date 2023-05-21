@@ -2,39 +2,105 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-.body1 {
-    background-color: #AFEEEE;
-    
+body {
+    background-image: url(img/fundo-site.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Anton';
 }
 
-.body2 {
-    background-color: #FFDAB9;
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #e228d8 #070d12;
+}
+  
+  
+*::-webkit-scrollbar {
+    width: 18px;
+}
+  
+*::-webkit-scrollbar-track {
+  background: #292325;
+}
+  
+*::-webkit-scrollbar-thumb {
+  background-color: #e228d8;
+  border-radius: 20px;
+  border: 3px solid #070d12;
 }
 
-.link {
+.container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+}
+
+
+.header {
+    border-bottom: 3px solid #32b9cd;
+}
+
+.header .container {
+    justify-content: space-between;
+}
+
+.header a {
     text-decoration: none;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-align: center;
-    color: black;
+    color: #e3b062;
 }
 
+.caixa-tudo {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    color: #e3b062;
+  }
+
+
+.titulo {
+    font-family: 'Anton';
+    font-weight: 400;
+    font-size: 200%;
+    color: #e3dde6;
+}
 
 .grafico_barra {
-    margin: auto;
-    margin-top: 100px;
+    margin: 10%;
     height: 35%;
     width: 40%;
-    padding: 30px 30px 30px 30px;
-    background-color: 	#E0FFFF;
-    border-radius: 10px;
+    background-color: white;
 }
 
-.grafico_linha {
-    margin: auto;
-    margin-top: 100px;
-    height: 35%;
-    width: 40%;
-    padding: 30px 30px 30px 30px;
-    background-color: #E0FFFF;
-    border-radius: 10px;
+.indicador {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 100px;
+    height: 120px;
+    margin: 6%;
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 4%;
+    border-radius: 3%;
+    border: 1px #ce17d4 dashed;
 }
+
+.indicador p {
+    text-align: justify;
+}
+
+.indicador img {
+    width: 60px;
+    height: 60px;
+    position: static;
+}
+

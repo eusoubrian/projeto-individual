@@ -6,21 +6,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gráficos Show!</title>
+
+    <script src="https://kit.fontawesome.com/3f0399636b.js" crossorigin="anonymous"></script>
+    <script src="../js/funcoes.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
     <link rel="stylesheet" href="dashboards.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
-<body class="body1">
-    <div class="grafico_barra">
-
-        <div>
-            <canvas id="myChart"></canvas>
+<body>
+    
+        <div class="header">
+            <div class="container">
+                <h1 class="titulo">Brasil com S</h1>
+                <ul>
+                    <li>
+                        <a href="">Curiosidades</a>
+                    </li>
+                    <li>
+                        <a href="">Ranking Décadas</a>
+                    </li>
+                    <li>
+                        <a href="">Sair</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-
+    <div class="caixa-tudo">
+        <div class="grafico_barra">
+            <div>
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+        <div class="indicador">
+            <p>A Década mais votada foi os Anos 2000!</p>
+            <img src="img/coracao.gif" alt="">
+        </div>
     </div>
-    <p class="link">
-        <a href="grafico02.html">VEJA AS HORAS DE CADA DIA</a>
-    </p>
+    
 </body>
 
 <!--Gráfico de Barras-->
@@ -38,8 +64,8 @@
         labels: labels,
         datasets: [{
             label: 'Votos',
-            backgroundColor: 'rgb(255, 69,0)',
-            borderColor: 'rgb(255, 69, 0)',
+            backgroundColor: '#250534',
+            borderColor: '#70159b)',
             data: [1, 5, 9, 3, 4, 11],
 
         }]
