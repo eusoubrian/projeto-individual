@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dashboards.css">
     <title>Gráficos Show!</title>
 
+    <   <!-- scripts do Chart.js - 2022-1 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://kit.fontawesome.com/3f0399636b.js" crossorigin="anonymous"></script>
     <script src="../js/funcoes.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
-    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
-    <link rel="stylesheet" href="dashboards.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 
@@ -49,44 +49,157 @@
     
 </body>
 
+
+
 <!--Gráfico de Barras-->
 <script>
-    const labels = [
-        'Anos 50',
-        'Anos 60',
-        'Anos 70',
-        'Anos 80',
-        'Anos 90',
-        'Anos 2000',
-    ];
-
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: 'Votos',
-            backgroundColor: '#250534',
-            borderColor: '#70159b)',
-            data: [1, 5, 9, 3, 4, 11],
-
-        }]
-    };
 
 
 
-    const config = {
-        type: 'bar',
-        data: data,
-        options: {}
-    };
-
-</script>
 
 
 
-<script>
-    const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
+    let proximaAtualizacao;
 
-</script>
+    window.onload = obterDadosGrafico(1);
+
+
+    function obterDadosGrafico(idAquario) {
+
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+
+
+        fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    plotarGrafico(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta) {
+        console.log('iniciando plotagem do gráfico...');
+
+        var dados = {
+            labels: ['Anos 50', 'Anos 60', 'Anos 70', 'Anos 80', 'Anos 90', 'Anos 2000'],
+            datasets: [
+                {
+                    label: '',
+
+                    data: []
+                },
+                {
+                    yAxisID: 'idUsuario',
+                    label: '',
+                    backgroundColor: ['#FF1493', '#FFFF00', '#FF4500', '#00FF00', '#4B0082', '#4B0082'],
+                    fill: true,
+                    data: []
+                }
+            ]
+        };
+      
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            dados.labels.push(registro.usuario);
+            dados.datasets[0].data.push(registro.usuario);
+            dados.datasets[1].data.push(registro.usuario);
+            console.log(registro.voto)
+
+
+        }
+
+        console.log(JSON.stringify(dados));
+
+        var ctx = myChart.getContext('2d');
+        window.myChart = new Chart(ctx, {
+            type:'bar',
+            data: dados,
+            options: {
+                responsive: true,
+                animation: { duration: 900 },
+                hoverMode: 'index',
+                stacked: false,
+                title: {
+                    display: true,
+                    text: 'Voto das Dédacas'
+                },
+
+                scales: {
+                    yAxes: [{
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        id: 'idUsuario',
+                        ticks: {
+                            beginAtZero: true,
+                            max: 10,
+                            min: 0
+                        }
+                    }, {
+                        display: false,
+                    }],
+                }
+            }
+        });
+
+
+        // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+        // buscando a última medida inserida em tabela contendo as capturas, 
+
+        //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+        //     Para ajustar o "select", ajuste o comando sql em src/models
+        function atualizarGrafico(idAquario, dados) {
+
+            fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (novoRegistro) {
+
+                        console.log(`Dados recebidos Atualizar  Graficos: ${JSON.stringify(novoRegistro)}`);
+                        console.log(dados);
+
+                        for (i = 0; i < novoRegistro.length; i++) {
+                            var registro = novoRegistro[i];
+                            // tirando e colocando valores no gráfico
+                            dados.labels.shift(); // apagar o primeiro
+                            dados.labels.push(registro.usuario);// incluir um novo momento
+
+                            dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                            dados.datasets[0].data.push(registro.usuario); // incluir uma nova medida de umidade
+
+                            dados.datasets[1].data.shift();
+                            dados.datasets[1].data.push(registro.voto);
+                        }
+
+                        window.myChart.update();
+
+                        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                        proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 200000);
+                }
+            })
+                .catch(function (error) {
+                    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                });
+
+        }
+
+    }
+</script> 
