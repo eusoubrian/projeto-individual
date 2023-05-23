@@ -12,11 +12,11 @@
     <div class="caixa_enorme">
         <div class="caixa">
             <label for="nome_input">Nome:</label>
-            <input id="nome_input" required>
+            <input id="nome_input">
             <label for="email_input">E-mail:</label>
-            <input type="email" id="email_input" required>
+            <input type="email" id="email_input">
             <label for="senha_input">Senha:</label>
-            <input type="password" id="senha_input" required>
+            <input type="password" id="senha_input">
             <label for="senha">Confirme a Senha:</label>
             <input type="password" id="confirmacao_senha_input">
             <select id="decada">
@@ -74,7 +74,7 @@
             'Cadastro Realizado!',
             'Redirecionando...'
             )
-            setInterval(sumirMensagem, 5000)
+            setInterval(sumirMensagem, 4000)
         }
 
         // Enviando o valor da nova input
@@ -98,7 +98,7 @@
             if (resposta.ok) {
                 cardErro.style.display = "block";
 
-                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                
 
                 setTimeout(() => {
                     window.location = "login.html";

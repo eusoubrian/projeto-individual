@@ -3,19 +3,24 @@
 <head>
 	<title>Tela de Login</title>
 	<link rel="stylesheet" href="css/login.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/funcoes.js"></script>
 </head>
 <body>
 
-
-	<div>
-		<label for="email">E-mail:</label>
-		<input type="email" id="email">
-		<label for="password">Senha:</label>
-		<input type="password" id="password">
-		<button onclick="entrar()">entrar</button>
-	</div>
-
-		
+    <div class="caixa_enorme">
+        <div class="caixa">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email">
+            <label for="password">Senha:</label>
+            <input type="password" id="password">
+            <button onclick="entrar()">ENTRAR</button>
+        </div>
+        <div class="caixa-imagem">
+            <img src="./assets/imgs/Adoniran 1.gif" alt="">
+        </div>
+    </div>
+    <div id="cardErro"></div>
 
 </body>
 </html>
@@ -31,9 +36,12 @@
         var senhaVar = password.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+            Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Preencha todos os campos para realizar o cadastro!',
+            })
+
             return false;
         }
         else {
@@ -67,7 +75,7 @@
                     sessionStorage.ID_USUARIO = json.idUsuario;
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "./dashboard/dashboard.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -75,11 +83,6 @@
             } else {
 
                 console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
             }
 
         }).catch(function (erro) {
