@@ -9,19 +9,6 @@ comandos para mysql - banco local - ambiente de desenvolvimento
 create database mpb;
 use mpb;
 
-create table usuario (
-idUsuario int primary key auto_increment,
-nome varchar(20),
-email varchar(90),
-senha varchar(8),
-fkDecada int,
-	constraint fkDecadaUsu foreign key (fkDecada)
-		references decada(idDecada)
-);
-
-insert into usuario values
-	(null, 'TESTE', 'teste@gmail.com', 'senha', 1);
-
 create table decada (
 idDecada int primary key auto_increment,
 nome varchar(10)
@@ -35,6 +22,20 @@ insert into decada values
 	(null, 'anos 90'),
 	(null, 'anos 2000');
 
+create table usuario (
+idUsuario int primary key auto_increment,
+nome varchar(20),
+email varchar(90),
+senha varchar(45),
+fkDecada int,
+	constraint fkDecadaUsu foreign key (fkDecada)
+		references decada(idDecada)
+);
+
+insert into usuario values
+	(null, 'TESTE', 'teste@gmail.com', 'senha', 1);
+
+
 create table voto (
 idVoto int,
 fkUsuario int,
@@ -45,6 +46,18 @@ dataVoto datetime,
     constraint fkDecVoto foreign key (fkDecada)
 		references decada(idDecada),
     constraint pkTripla primary key (idVoto, fkUsuario, fkDecada));
+
+
+-- SELECT DA KPI --
+select count(fkDecada) as voto, decada.nome from usuario
+		join decada on usuario.fkDecada = decada.idDecada
+        group by decada.nome 
+		order by voto desc limit 1;
+
+-- SELECT GRÁFICO --        
+select count(fkDecada) as voto, decada.nome from usuario
+join decada on usuario.fkDecada = decada.idDecada
+group by decada.nome;
     
 
 /*

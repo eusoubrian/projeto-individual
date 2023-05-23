@@ -623,8 +623,9 @@
         <input id="inputNome" placeholder="Nome do Artista">
         <button onclick="sorteio()">Sortear imagem</button>
         <button onclick="verificar()">Verificar</button>
-        <div id="divResposta"></div>
       </div>
+      <div id="divResposta"></div>
+
       <div id="divImagem"></div>
 
     </section>
@@ -742,6 +743,22 @@
     {
       imagem: "<img src='./assets/imgs/albuns/anos70/tim_maia_tim.jpg'>",
       nome: "tim maia"
+    },
+    {
+      imagem: "<img src='./assets/imgs/albuns/anos90/sobrevivendo_no_inferno.jpg'>",
+      nome: "racionais mc's"
+    },
+    {
+      imagem: "<img src='./assets/imgs/albuns/anos2000/ataque_lirico_cone.jpg'>",
+      nome: "cone crew"
+    },
+    {
+      imagem: "<img src='./assets/imgs/albuns/anos70/a_voz_violao_djavan.jpg'>",
+      nome: "djavan"
+    },
+    {
+      imagem: "<img src='./assets/imgs/albuns/anos70/secos_molhados_secos.jpg'>",
+      nome: "secos e molhados"
     }
     
   ]
@@ -767,20 +784,23 @@
     var iptNome = inputNome.value.toLowerCase()
 
     if (nome == iptNome) {
-      sorteio()
       contador++
       inputNome.value = '';
-      divResposta.innerHTML = `ACERTOU!!!`;
+      divResposta.innerHTML = `ACERTOU!!! Jogue novamente`;
     } else {
       sorteio()
       contador--
       inputNome.value = '';
-      divResposta.innerHTML = `ERROU!!!`;
+      Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'ERROUUUU!!!'
+      })
     }
       if(contador == 2) {
         Swal.fire({
         title:'Parabéns',
-        text:'Você acabou de acertar 5 SEGUIDAS!!!',
+        text:'Você acabou de acertar 3 SEGUIDAS!!!',
         color: '#716add',
         backdrop: `rgba(0,0,123,0.4)
         url("./assets/imgs/gifs-com-meme-do-bolsonaro-6.gif")
