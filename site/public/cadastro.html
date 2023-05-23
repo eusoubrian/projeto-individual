@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Tela de Cadastro</title>
     <link rel="stylesheet" href="css/cadastro.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -61,12 +62,18 @@
 
         if (nomeVar == "" || emailVar == "" || senhaVar == "" || decadaVar == "" || confirmacaoSenhaVar == "") {
             cardErro.style.display = "block"
-            alert('Preencha todos os campos!');
-
-
+            Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Preencha todos os campos para realizar o cadastro!',
+            })
             return false;
         }
         else {
+            Swal.fire(
+            'Cadastro Realizado!',
+            'Redirecionando...'
+            )
             setInterval(sumirMensagem, 5000)
         }
 

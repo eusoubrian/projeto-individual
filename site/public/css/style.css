@@ -354,8 +354,8 @@ footer h3 {
 }
 
 #divImagem img {
-  width: 150%;
-  height: 150%;
+  width: 200vw;
+  height: 300vh;
 
 }
 
