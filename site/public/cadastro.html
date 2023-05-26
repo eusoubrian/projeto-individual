@@ -68,6 +68,13 @@
             text: 'Preencha todos os campos para realizar o cadastro!',
             })
             return false;
+        } else if(senhaVar != confirmacaoSenhaVar) {
+            cardErro.style.display = "block"
+            Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Sua senha não condiz com a confirmação de senha!',
+            })
         }
         else {
             Swal.fire({
@@ -80,6 +87,7 @@
             })
             setInterval(sumirMensagem, 4000)
         }
+
 
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {

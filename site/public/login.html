@@ -45,6 +45,14 @@
             return false;
         }
         else {
+            Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Login Realizado!',
+            text: 'Redirecionando...',
+            showConfirmButton: false,
+            timer: 1500
+            })
             setInterval(sumirMensagem, 5000)
         }
 

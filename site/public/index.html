@@ -8,6 +8,7 @@
   <title>Brasil com S</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="icon" href="./assets/imgs/favicon.png">
 </head>
 
 <body>
@@ -622,7 +623,7 @@
       <div class="caixa-exibicao">
         <input id="inputNome" placeholder="Nome do Artista">
         <button onclick="sorteio()">Sortear imagem</button>
-        <button onclick="verificar()">Verificar</button>
+        <button id="botao-verificar" onclick="verificar()">Verificar</button>
       </div>
       <div id="divResposta"></div>
 
@@ -770,7 +771,6 @@
 
   function sorteio() {
     aleatorio = posicao(listaImagens)
-
     divImagem.innerHTML = `${listaImagens[aleatorio].imagem}`
     divResposta.innerHTML = ``;
     inputNome.value = '';
