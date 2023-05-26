@@ -645,6 +645,7 @@
     <h3>BRASIL COM S</h3>
   </footer>
 
+
 </body>
 
 </html>
@@ -786,11 +787,12 @@
       contador++
       inputNome.value = '';
       sorteio()
-      divResposta.innerHTML = `<img src='./assets/imgs/correct.png' alt="">`;
+      divResposta.innerHTML = `<img src='./assets/imgs/correct.png' alt=""> <p>${contador}</p>`;
+      
     } else {
       divResposta.innerHTML = ""
       sorteio()
-      contador--
+      contador = contador - 2
       inputNome.value = '';
       Swal.fire({
       icon: 'error',
@@ -800,6 +802,7 @@
     }
       if(contador == 3) {
         Swal.fire({
+        icon: 'success',
         title:'Parabéns',
         text:'Você acabou de acertar 3 SEGUIDAS!!!',
         color: '#716add',
@@ -809,7 +812,21 @@
         no-repeat`})
         divResposta.innerHTML = ""
       } else if(contador == 5) {
-
+        Swal.fire({
+        icon: 'success',
+        title: 'VOCÊ É UM MONSTRO!!!',
+        text:'Você acabou de acertar 3 SEGUIDAS!!!',
+        width: 600,
+        padding: '3em',
+        color: '#716add',
+        background: '#fff ',
+        backdrop: `
+                rgba(0,0,123,0.4)
+                url(./assets/imgs/gatinhoMal.gif)
+                left top
+                no-repeat
+                    `
+        })
       }
       /* setTimeout(() => {
           sorteio();
