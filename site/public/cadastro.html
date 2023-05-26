@@ -70,10 +70,14 @@
             return false;
         }
         else {
-            Swal.fire(
-            'Cadastro Realizado!',
-            'Redirecionando...'
-            )
+            Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Cadastro Realizado!',
+            text: 'Redirecionando...',
+            showConfirmButton: false,
+            timer: 1500
+            })
             setInterval(sumirMensagem, 4000)
         }
 
