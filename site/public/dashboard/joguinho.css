@@ -14,15 +14,12 @@ main {
     padding-left: 4%;
     padding-right: 4%;
     padding-bottom: 5%;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 
-section img {
-    max-width:200px;
-    max-height:150px;
-    width: auto;
-    height: auto;
-    border: gray 1px solid;
-}
+
 
 button {
     padding: 10px 20px;
@@ -71,40 +68,42 @@ button {
   padding-top: 4%;
 }
 
+
+
 #divImagem {
+  padding-top: 25%;
   display: flex;
   justify-content: center;
-  padding-top: 2%;
+  height: 100%;
+  width: 100%;
 }
 
-#divImagem img {
-  width: 200vw;
-  height: 300vh;
-}
-
-#divResposta {
-    font-family: 'Anton';
-    display: flex;
-    justify-content: center;
-    color: green;
-    gap: 10px;
-    font-size: 50px;
-}
-
-#divResposta p {
-  font-family: 'Anton';
-  color: green;
-  font-size: 25px;
-}
-
-#divResposta img {
-  border: none;
+img {
+  display: flex;
+  justify-content: center;
+  width: 40%;
+  height: 60%;
+  border: gray 1px solid;
+  padding: 2px;
 }
 
 #teste-conhecimento {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.esquerda {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.direita {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
 }
 
 .titulo-melhores {

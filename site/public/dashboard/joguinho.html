@@ -14,30 +14,31 @@
     <main>
         <section id="teste-conhecimento">
 
-            <div class="titulo-melhores">
-                <h2>QUEM É O CANTOR?</h2>
-            </div>
-
-            <div class="caixa-enorme-sorteio">
-                <div class="caixa-sorteio">
-                    <h4>É o seguinte!</h4>
-                    <p>Quando você clicar no botão Sortear Imagens, vai aparecer algum álbum aleatório</p>
-                    <p>Você deverá descobrir quem é o Artista desse álbum (sem espiar)</p>
+            <div class="esquerda">
+                <div class="titulo-melhores">
+                    <h2>QUEM É O CANTOR?</h2>
+                </div>
+                <div class="caixa-enorme-sorteio">
+                    <div class="caixa-sorteio">
+                        <h4>É o seguinte!</h4>
+                        <p>Quando você clicar no botão Sortear Imagens, vai aparecer algum álbum aleatório</p>
+                        <p>Você deverá descobrir quem é o Artista desse álbum (sem espiar)</p>
+                    </div>
+                </div>
+                
+                <div class="caixa-exibicao">
+                    <input id="inputNome" placeholder="Nome do Artista">
+                    <button onclick="sorteio()">Sortear imagem</button>
+                    <button id="botao-verificar" onclick="verificar()">Verificar</button>
                 </div>
             </div>
 
-            <div class="caixa-exibicao">
-                <input id="inputNome" placeholder="Nome do Artista">
-                <button onclick="sorteio()">Sortear imagem</button>
-                <button id="botao-verificar" onclick="verificar()">Verificar</button>
+            <div class="direita">
+                <div id="divImagem"></div>
             </div>
-            <div id="divResposta"></div>
-
-            <div id="divImagem"></div>
 
         </section>
     </main>
-    <img src=".../assets/imgs/albuns/" alt="">
 </body>
 
 </html>
@@ -45,7 +46,7 @@
 <script>
     var listaImagens = [
         {
-            imagem: "<img src='../assets/imgs/albuns/anos70/acabou_chorare_baianos.jpg'>",
+            imagem: "<img class='img_legal' src='../assets/imgs/albuns/anos70/acabou_chorare_baianos.jpg'>",
             nome: "novos baianos"
         },
         {
@@ -140,7 +141,6 @@
     function sorteio() {
         aleatorio = posicao(listaImagens)
         divImagem.innerHTML = `${listaImagens[aleatorio].imagem}`
-        divResposta.innerHTML = ``;
         inputNome.value = '';
     }
 
@@ -159,20 +159,24 @@
         if (nome == iptNome) {
             pontuacao++
             inputNome.value = '';
-            divResposta.innerHTML = `<img src='../assets/imgs/correct.png' alt=""> <p>Tentativa:${tentativa}</p> <br>
-                                    Sorteie de novo!`;
-
+            Swal.fire({
+                 icon: 'success',
+                 title: 'Acertou!!!',
+                 text: `Artista: ${listaImagens[aleatorio].nome.toUpperCase()}`,
+                 footer: `Sua pontuação por enquanto: ${pontuacao} | Tentativas: ${tentativa}/10`
+             })
+             sorteio()
         
         } else {
-            divResposta.innerHTML = ""
             pontuacao = pontuacao - 2
             inputNome.value = '';
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'ERROUUUU!!!',
-                text: `A resposta certa era ${listaImagens[aleatorio].nome}`
-            })
+             Swal.fire({
+                 icon: 'error',
+                 title: 'Oops...',
+                 footer: `Sua pontuação por enquanto: ${pontuacao}`,
+                 text: `Tentativas: ${tentativa}/10 | Tentativas ${tentativa}/10`,
+                 text: `A resposta certa era ${listaImagens[aleatorio].nome.toUpperCase()}`
+             })
             sorteio()
         }
         // if (pontuacao == 5) {
@@ -183,12 +187,16 @@
         //     })
         // }
         } else {
-            divResposta.innerHTML = "Suas tentativas acabaram!"
+            Swal.fire({
+            title: 'Suas tentativas acabaram!',
+            text: "Sua pontuação está sendo armazenada...",
+            icon: 'warning',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Ok, entendi'
+            })
         }
     }
 
-    function teste() {
-        console.log(contador)
-    }
+    
 
 </script>
