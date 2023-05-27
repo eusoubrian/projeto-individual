@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quem é o Cantor?</title>
+    <link rel="stylesheet" href="joguinho.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <main>
+        <section id="teste-conhecimento">
+
+            <div class="titulo-melhores">
+                <h2>QUEM É O CANTOR?</h2>
+            </div>
+
+            <div class="caixa-enorme-sorteio">
+                <div class="caixa-sorteio">
+                    <h4>É o seguinte!</h4>
+                    <p>Quando você clicar no botão Sortear Imagens, vai aparecer algum álbum aleatório</p>
+                    <p>Você deverá descobrir quem é o Artista desse álbum (sem espiar)</p>
+                </div>
+            </div>
+
+            <div class="caixa-exibicao">
+                <input id="inputNome" placeholder="Nome do Artista">
+                <button onclick="sorteio()">Sortear imagem</button>
+                <button id="botao-verificar" onclick="verificar()">Verificar</button>
+            </div>
+            <div id="divResposta"></div>
+
+            <div id="divImagem"></div>
+
+        </section>
+    </main>
+    <img src=".../assets/imgs/albuns/" alt="">
+</body>
+
+</html>
+
+<script>
+    var listaImagens = [
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos70/acabou_chorare_baianos.jpg'>",
+            nome: "novos baianos"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos80/ney_matogrosso_apenas.jpg'>",
+            nome: "ney matogrosso"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos80/beleleu_assumpcao.jpg'>",
+            nome: "itamar assumpção"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos2000/nada_como_um_dia.jpg'>",
+            nome: "racionais mc's"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos90/divina_comedia_humana_belchior.jpg'>",
+            nome: "belchior"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos70/estudando_samba_tomze.jpg'>",
+            nome: "tom zé"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos70/danca_solidao_paulinViola.jpg'>",
+            nome: "paulinho da viola"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos2000/tamo_atividade_charlie.jpg'>",
+            nome: "charlie brown jr"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos2000/sim_vanessa_mata.jpg'>",
+            nome: "vanessa da mata"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos80/caminhos_coracao_gonzaguinha.jpg'>",
+            nome: "gonzaguinha"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos70/forca_bruta_jorgeBen.jpg'>",
+            nome: "jorge ben jor"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos70/cantar_gal.jpg'>",
+            nome: "gal costa"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos50/caymmi_violao_caymmi.jpg'>",
+            nome: "dorival caymmi"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos50/chega_saudade_jgilberto.jpg'>",
+            nome: "joão gilberto"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos60/som_baden_baden.jpg'>",
+            nome: "baden powell"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos70/krig_ha_raul.jpg'>",
+            nome: "raul seixas"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos70/tim_maia_tim.jpg'>",
+            nome: "tim maia"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos90/sobrevivendo_no_inferno.jpg'>",
+            nome: "racionais mc's"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos2000/ataque_lirico_cone.jpg'>",
+            nome: "cone crew"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos70/a_voz_violao_djavan.jpg'>",
+            nome: "djavan"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos70/secos_molhados_secos.jpg'>",
+            nome: "secos e molhados"
+        }
+
+    ]
+
+    var aleatorio = 0
+
+    function posicao(lista) {
+        return parseInt(Math.random() * lista.length)
+    }
+
+    function sorteio() {
+        aleatorio = posicao(listaImagens)
+        divImagem.innerHTML = `${listaImagens[aleatorio].imagem}`
+        divResposta.innerHTML = ``;
+        inputNome.value = '';
+    }
+
+    var pontuacao = 0
+    var tentativa = 0
+    function verificar() {
+        /*         var listaImagens.length = listaImagens.length
+                var aleatorio = parseInt(Math.random() * listaImagens.length) */
+
+        
+        var nome = listaImagens[aleatorio].nome
+        var iptNome = inputNome.value.toLowerCase()
+
+        if(tentativa <= 9) {
+        tentativa++
+        if (nome == iptNome) {
+            pontuacao++
+            inputNome.value = '';
+            divResposta.innerHTML = `<img src='../assets/imgs/correct.png' alt=""> <p>Tentativa:${tentativa}</p> <br>
+                                    Sorteie de novo!`;
+
+        
+        } else {
+            divResposta.innerHTML = ""
+            pontuacao = pontuacao - 2
+            inputNome.value = '';
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'ERROUUUU!!!',
+                text: `A resposta certa era ${listaImagens[aleatorio].nome}`
+            })
+            sorteio()
+        }
+        // if (pontuacao == 5) {
+        //     Swal.fire({
+        //         icon: 'success',
+        //         title: 'VOCÊ É UM MONSTRO!!!',
+        //         text: 'Você acabou de acertar 5 SEGUIDAS!!!',
+        //     })
+        // }
+        } else {
+            divResposta.innerHTML = "Suas tentativas acabaram!"
+        }
+    }
+
+    function teste() {
+        console.log(contador)
+    }
+
+</script>

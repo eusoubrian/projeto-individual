@@ -32,20 +32,22 @@ fkDecada int,
 		references decada(idDecada)
 );
 
+create table pontuacao (
+idPontuacao int primary key auto_increment,
+fkUsuario int,
+	constraint fkUserPont foreign key (fkUsuario)
+		references usuario(idUsuario),
+contador int
+);
+
 insert into usuario values
 	(null, 'TESTE', 'teste@gmail.com', 'senha', 1);
-
-
-create table voto (
-idVoto int,
-fkUsuario int,
-fkDecada int,
-dataVoto datetime,
-	constraint fkUsuarioVoto foreign key (fkUsuario)
-		references usuario(idUsuario),
-    constraint fkDecVoto foreign key (fkDecada)
-		references decada(idDecada),
-    constraint pkTripla primary key (idVoto, fkUsuario, fkDecada));
+    
+insert into pontuacao values
+	(null, 1, 5);
+    
+-- SELECT PONTUACAO --
+select contador from pontuacao where fkUsuario = 1;
 
 
 -- SELECT DA KPI --
