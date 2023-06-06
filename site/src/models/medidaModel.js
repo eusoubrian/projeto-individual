@@ -68,9 +68,36 @@ function buscarPontuacao(idAquario) {
     return database.executar(instrucaoSql);
 }
 
+function buscarMelhorDecada()
+    {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `
+        select count(fkDecada) as voto, decada.nome from usuario
+		join decada on usuario.fkDecada = decada.idDecada
+        group by decada.nome 
+		order by voto desc limit 1;`;
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `select count(fkDecada) as voto, decada.nome from usuario
+		join decada on usuario.fkDecada = decada.idDecada
+        group by decada.nome 
+		order by voto desc limit 1;`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
-    buscarPontuacao
+    buscarPontuacao,
+    buscarMelhorDecada
 }

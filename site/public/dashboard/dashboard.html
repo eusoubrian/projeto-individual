@@ -53,10 +53,8 @@
 <script>
 
 
-
-
-
-
+    var maior = sessionStorage
+    
     let proximaAtualizacao;
 
     window.onload = obterDadosGrafico(1);
@@ -92,7 +90,7 @@
         console.log('iniciando plotagem do gráfico...');
 
         var dados = {
-            labels: ['Anos 50', 'Anos 60', 'Anos 70', 'Anos 80', 'Anos 90', 'Anos 2000'],
+            labels: [],
             datasets: [
                 {
                     label: '',
@@ -111,13 +109,14 @@
 
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
-            dados.labels.push(registro.usuario);
-            dados.datasets[0].data.push(registro.usuario);
-            dados.datasets[1].data.push(registro.usuario);
+            dados.labels.push(registro.nome);
+            dados.datasets[0].data.push(registro.decada);
+            dados.datasets[1].data.push(registro.voto);
             console.log(registro.voto)
 
 
         }
+        console.log(registro.nome)
 
         console.log(JSON.stringify(dados));
 
@@ -172,10 +171,10 @@
                             var registro = novoRegistro[i];
                             // tirando e colocando valores no gráfico
                             dados.labels.shift(); // apagar o primeiro
-                            dados.labels.push(registro.usuario);// incluir um novo momento
+                            dados.labels.push(registro.decada);// incluir um novo momento
 
                             dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                            dados.datasets[0].data.push(registro.usuario); // incluir uma nova medida de umidade
+                            dados.datasets[0].data.push(registro.decada); // incluir uma nova medida de umidade
 
                             dados.datasets[1].data.shift();
                             dados.datasets[1].data.push(registro.voto);
@@ -199,4 +198,24 @@
         }
 
     }
+
+
+    
+    function buscarMelhorDecada() {
+        fetch(`/medidas/melhorDecada`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    plotarGrafico(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+    
 </script> 
