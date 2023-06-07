@@ -68,8 +68,7 @@ function buscarPontuacao(idAquario) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMelhorDecada()
-    {
+function buscarMelhorDecada() {
 
     instrucaoSql = ''
 
@@ -90,8 +89,8 @@ function buscarMelhorDecada()
         return
     }
 
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+    console.log("Executando a instrução SQL: "+instrucao);
+    return database.executar(instrucao);
 }
 
 

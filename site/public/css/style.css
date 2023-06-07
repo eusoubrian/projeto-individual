@@ -211,6 +211,16 @@ section img {
   font-weight: 800;
 }
 
+.span-pedacos {
+  color:  #2d2419;
+  font-weight: 800;
+}
+
+.span-chico-banca {
+  color: #2f4f4f;
+  font-weight: 800;
+}
+
 .titulo-albuns {
   font-family: 'Anton';
   font-size: 200%;

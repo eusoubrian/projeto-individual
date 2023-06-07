@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="indicador">
-            <p>A Década mais votada foi os Anos 2000!</p>
+            <p>A Década mais votada foi os <span id="spanMelhor"></span></p>
             <img src="img/coracao.gif" alt="">
         </div>
     </div>
@@ -52,10 +52,22 @@
 <!--Gráfico de Barras-->
 <script>
 
-
-    var maior = sessionStorage
+function buscarMelhorDecada(idArmazem)  {
+    fetch(`/graficos/listarQtdSensores/${idArmazem}`).then(function (resposta) {
+        if(resposta.ok) {
+            if(resposta.status == 204) {
+                console.log("ta vazio");
+            } else {
+                resposta.json().then(function (resposta) {
+                    spanMelhor = document.getElementById("qtd_sensor");
+                    spanMelhor.innerHTML = `${resposta[0].qtd_sensor}`;
+                })
+            }
+        }
+    });
+}
     
-    let proximaAtualizacao;
+    var proximaAtualizacao;
 
     window.onload = obterDadosGrafico(1);
 
@@ -201,21 +213,21 @@
 
 
     
-    function buscarMelhorDecada() {
-        fetch(`/medidas/melhorDecada`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    plotarGrafico(resposta);
+    // function buscarMelhorDecada() {
+    //     fetch(`/medidas/melhorDecada`, { cache: 'no-store' }).then(function (response) {
+    //         if (response.ok) {
+    //             response.json().then(function (resposta) {
+    //                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+    //                 plotarGrafico(resposta);
 
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-    }
+    //             });
+    //         } else {
+    //             console.error('Nenhum dado encontrado ou erro na API');
+    //         }
+    //     })
+    //         .catch(function (error) {
+    //             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    //         });
+    // }
     
 </script> 

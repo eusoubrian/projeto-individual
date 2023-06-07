@@ -20,14 +20,17 @@
                 </div>
                 <div class="caixa-enorme-sorteio">
                     <div class="caixa-sorteio">
-                        <h4>É o seguinte!</h4>
-                        <p>Quando você clicar no botão Sortear Imagens, vai aparecer algum álbum aleatório</p>
-                        <p>Você deverá descobrir quem é o Artista desse álbum (sem espiar)</p>
+                        <h4>Olha o Cantor aqui de novo!</h4>
+                        <p>Agora valendo pontuação de verdade! Você tem 10 tentativas</p>
+                        <p>Você deverá descobrir quem é o Artista desse álbum <br>
+                            Para cada acerto: <span class="span-ouro">+10 pontos</span> <br>
+                            Para cada erro: <span class="span-ouro">-5 pontos</span>
+                        </p>
                     </div>
                 </div>
                 
                 <div class="caixa-exibicao">
-                    <input id="inputNome" placeholder="Nome do Artista">
+                    
                     <button onclick="sorteio()">Sortear imagem</button>
                     <button id="botao-verificar" onclick="verificar()">Verificar</button>
                 </div>
@@ -35,6 +38,8 @@
 
             <div class="direita">
                 <div id="divImagem"></div>
+                <label for="inputNome">Nome do Artista</label>
+                <input id="inputNome" spellcheck="false">
             </div>
 
         </section>
@@ -157,7 +162,7 @@
         if(tentativa <= 9) {
         tentativa++
         if (nome == iptNome) {
-            pontuacao++
+            pontuacao += 10
             inputNome.value = '';
             Swal.fire({
                  icon: 'success',
@@ -168,13 +173,12 @@
              sorteio()
         
         } else {
-            pontuacao = pontuacao - 2
+            pontuacao -= 5
             inputNome.value = '';
              Swal.fire({
                  icon: 'error',
                  title: 'Oops...',
-                 footer: `Sua pontuação por enquanto: ${pontuacao}`,
-                 text: `Tentativas: ${tentativa}/10 | Tentativas ${tentativa}/10`,
+                 footer: `Sua pontuação por enquanto: ${pontuacao} | Tentativas: ${tentativa}/10`,
                  text: `A resposta certa era ${listaImagens[aleatorio].nome.toUpperCase()}`
              })
             sorteio()
