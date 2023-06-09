@@ -28,9 +28,9 @@
                         </p>
                     </div>
                 </div>
-                
+
                 <div class="caixa-exibicao">
-                    
+
                     <button onclick="sorteio()">Sortear imagem</button>
                     <button id="botao-verificar" onclick="verificar()">Verificar</button>
                 </div>
@@ -152,55 +152,86 @@
     var pontuacao = 0
     var tentativa = 0
     function verificar() {
+        var idUsuario = Number(sessionStorage.ID_USUARIO);
         /*         var listaImagens.length = listaImagens.length
                 var aleatorio = parseInt(Math.random() * listaImagens.length) */
 
-        
+
         var nome = listaImagens[aleatorio].nome
         var iptNome = inputNome.value.toLowerCase()
 
-        if(tentativa <= 9) {
-        tentativa++
-        if (nome == iptNome) {
-            pontuacao += 10
-            inputNome.value = '';
-            Swal.fire({
-                 icon: 'success',
-                 title: 'Acertou!!!',
-                 text: `Artista: ${listaImagens[aleatorio].nome.toUpperCase()}`,
-                 footer: `Sua pontuação por enquanto: ${pontuacao} | Tentativas: ${tentativa}/10`
-             })
-             sorteio()
-        
+        if (tentativa <= 9) {
+            tentativa++
+            if (nome == iptNome) {
+                pontuacao += 10
+                inputNome.value = '';
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Acertou!!!',
+                    text: `Artista: ${listaImagens[aleatorio].nome.toUpperCase()}`,
+                    footer: `Sua pontuação por enquanto: ${pontuacao} | Tentativas: ${tentativa}/10`
+                })
+                sorteio()
+
+            } else {
+                pontuacao -= 5
+                inputNome.value = '';
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    footer: `Sua pontuação por enquanto: ${pontuacao} | Tentativas: ${tentativa}/10`,
+                    text: `A resposta certa era ${listaImagens[aleatorio].nome.toUpperCase()}`
+                })
+                sorteio()
+            }
+            // if (pontuacao == 5) {
+            //     Swal.fire({
+            //         icon: 'success',
+            //         title: 'VOCÊ É UM MONSTRO!!!',
+            //         text: 'Você acabou de acertar 5 SEGUIDAS!!!',
+            //     })
+            // }
         } else {
-            pontuacao -= 5
-            inputNome.value = '';
-             Swal.fire({
-                 icon: 'error',
-                 title: 'Oops...',
-                 footer: `Sua pontuação por enquanto: ${pontuacao} | Tentativas: ${tentativa}/10`,
-                 text: `A resposta certa era ${listaImagens[aleatorio].nome.toUpperCase()}`
-             })
-            sorteio()
+            fetch("/usuarios/Pontuacao", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.j
+                    idUsuarioServer: idUsuario,
+                    pontosServer: pontuacao,
+                })
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    Swal.fire({
+                    title: 'Suas tentativas acabaram!',
+                    text: "Sua pontuação está sendo armazenada...",
+                    icon: 'warning',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Ok, entendi'
+                    }).then((result) => {
+                        setTimeout(function () {
+                            window.location = "dashboard.html";
+                        }, 1000);
+                    })
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+            return false;
         }
-        // if (pontuacao == 5) {
-        //     Swal.fire({
-        //         icon: 'success',
-        //         title: 'VOCÊ É UM MONSTRO!!!',
-        //         text: 'Você acabou de acertar 5 SEGUIDAS!!!',
-        //     })
-        // }
-        } else {
-            Swal.fire({
-            title: 'Suas tentativas acabaram!',
-            text: "Sua pontuação está sendo armazenada...",
-            icon: 'warning',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Ok, entendi'
-            })
-        }
+
+
     }
 
-    
+
 
 </script>

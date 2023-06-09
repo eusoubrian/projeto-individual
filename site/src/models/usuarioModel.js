@@ -32,8 +32,22 @@ function cadastrar(nome, email, senha, decada) {
     return database.executar(instrucao);
 }
 
+function Pontuacao(idUsuario, pontos) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n cadastrarPontuacao()", idUsuario, pontos);
+
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.  +9*
+    console.log(idUsuario);
+    var instrucao = `
+        INSERT INTO pontuacao (fkUsuario, contador) VALUES (${idUsuario}, ${pontos});
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
+    Pontuacao
 };

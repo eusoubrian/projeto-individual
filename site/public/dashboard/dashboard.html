@@ -43,8 +43,9 @@
             </div>
         </div>
         <div class="indicador">
-            <p>A Década mais votada foi os <span id="spanMelhor"></span></p>
+            <p>A Década mais votada foi os <span id="spanMelhor"></span> </p>
             <img src="img/coracao.gif" alt="">
+            
         </div>
     </div>
 
@@ -61,22 +62,24 @@
     var proximaAtualizacao;
 
     window.onload = obterDadosGrafico(1);
+    window.onload = buscarMelhorDecada();
 
 
-    // function buscarMelhorDecada() {
-    //     fetch(`/medidas/melhorDecada`).then(function (resposta) {
-    //         if (resposta.ok) {
-    //             if (resposta.status == 204) {
-    //                 console.log("ta vazio");
-    //             } else {
-    //                 resposta.json().then(function (resposta) {
-    //                     spanMelhor = document.getElementById("spanMelhor");
-    //                     spanMelhor.innerHTML = `${resposta[0].spanMelhor}`;
-    //                 })
-    //             }
-    //         }
-    //     });
-    // }
+    function buscarMelhorDecada() {
+        fetch(`/medidas/melhorDecada`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status === 204) {
+                    console.log("ta vazio")
+                } else {
+                    resposta.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        var spanMelhor = document.getElementById("spanMelhor")
+                        spanMelhor.innerHTML = `${spanMelhor}`
+                    })
+                }
+            }
+        })
+    }
 
 
 
@@ -219,25 +222,5 @@
 
     }
 
-
-
-    function buscarMelhorDecada() {
-        fetch(`/medidas/melhorDecada`, { cache: 'no-store' }).then(function (resposta) {
-            if (resposta.ok) {
-                resposta.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    plotarGrafico(resposta);
-                    spanMelhor = document.getElementById("spanMelhor");
-                    spanMelhor.innerHTML = spanMelhor;
-
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-    }
 
 </script>

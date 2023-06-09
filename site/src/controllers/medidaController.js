@@ -61,24 +61,25 @@ function buscarPontuacao(req, res) {
 }
 
 function buscarMelhorDecada(req, res) {
-    var idAquario = req.params.idAquario;
   
-    medidaModel.buscarMelhorDecada(idAquario).then(function (resposta) {
-      if(resposta.length > 0) {
-        console.log("e aqui");
-        res.status(200).json(resposta);
-        console.log("entramos "+ resposta.length);
-      } else {
-        res.status(204).send("Nenhum resultado encontrado")
-      }
-    }).catch(function (resposta) {
-      console.log("\nHouve um erro ao buscar resultados");
-    })
+    medidaModel.buscarMelhorDecada()
+      .then(function (resultado) {
+        if (resultado.length > 0) {
+          console.log("e aqui")
+          res.status(200).json(resultado);
+          console.log("entramos" + resultado.length)
+        } else {
+          res.status(204).send("Nenhum resultado encontrado!")
+        }
+      })
+      .catch(function (resultado) {
+        console.log("\nHouve um erro ao buscar resultados");
+      })
   }
 
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
     buscarPontuacao,
-    buscarMelhorDecada
+    buscarMelhorDecada,
 }
