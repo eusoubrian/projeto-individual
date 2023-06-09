@@ -16,23 +16,26 @@
 </head>
 
 <body>
-    
-        <div class="header">
-            <div class="container">
-                <h1 class="titulo">Brasil com S</h1>
-                <ul>
-                    <li>
-                        <a href="joguinho.html">Quem é o Cantor?</a>
-                    </li>
-                    <li>
-                        <a href="">Ranking Décadas</a>
-                    </li>
-                    <li>
-                        <a href="../index.html">Sair</a>
-                    </li>
-                </ul>
+
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo">Brasil com S</h1>
+            <div class="nomeUser">
+                <h3>Bem Vindo <span id="nomeUser"></span></h3>
             </div>
+            <ul>
+                <li>
+                    <a href="joguinho.html">Quem é o Cantor?</a>
+                </li>
+                <li>
+                    <a href="">Ranking Décadas</a>
+                </li>
+                <li>
+                    <a onclick="limparSessao()" href="../index.html">Sair</a>
+                </li>
+            </ul>
         </div>
+    </div>
     <div class="caixa-tudo">
         <div class="grafico_barra">
             <div>
@@ -44,7 +47,7 @@
             <img src="img/coracao.gif" alt="">
         </div>
     </div>
-    
+
 </body>
 
 
@@ -52,24 +55,29 @@
 <!--Gráfico de Barras-->
 <script>
 
-function buscarMelhorDecada(idArmazem)  {
-    fetch(`/graficos/listarQtdSensores/${idArmazem}`).then(function (resposta) {
-        if(resposta.ok) {
-            if(resposta.status == 204) {
-                console.log("ta vazio");
-            } else {
-                resposta.json().then(function (resposta) {
-                    spanMelhor = document.getElementById("qtd_sensor");
-                    spanMelhor.innerHTML = `${resposta[0].qtd_sensor}`;
-                })
-            }
-        }
-    });
-}
-    
+    var nome = sessionStorage.NOME_USUARIO;
+    nome = document.getElementById("nomeUser");
+    nome.innerText = sessionStorage.NOME_USUARIO;
     var proximaAtualizacao;
 
     window.onload = obterDadosGrafico(1);
+
+
+    // function buscarMelhorDecada() {
+    //     fetch(`/medidas/melhorDecada`).then(function (resposta) {
+    //         if (resposta.ok) {
+    //             if (resposta.status == 204) {
+    //                 console.log("ta vazio");
+    //             } else {
+    //                 resposta.json().then(function (resposta) {
+    //                     spanMelhor = document.getElementById("spanMelhor");
+    //                     spanMelhor.innerHTML = `${resposta[0].spanMelhor}`;
+    //                 })
+    //             }
+    //         }
+    //     });
+    // }
+
 
 
     function obterDadosGrafico(idAquario) {
@@ -117,7 +125,7 @@ function buscarMelhorDecada(idArmazem)  {
                 }
             ]
         };
-      
+
 
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
@@ -134,7 +142,7 @@ function buscarMelhorDecada(idArmazem)  {
 
         var ctx = myChart.getContext('2d');
         window.myChart = new Chart(ctx, {
-            type:'bar',
+            type: 'bar',
             data: dados,
             options: {
                 responsive: true,
@@ -212,22 +220,24 @@ function buscarMelhorDecada(idArmazem)  {
     }
 
 
-    
-    // function buscarMelhorDecada() {
-    //     fetch(`/medidas/melhorDecada`, { cache: 'no-store' }).then(function (response) {
-    //         if (response.ok) {
-    //             response.json().then(function (resposta) {
-    //                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-    //                 plotarGrafico(resposta);
 
-    //             });
-    //         } else {
-    //             console.error('Nenhum dado encontrado ou erro na API');
-    //         }
-    //     })
-    //         .catch(function (error) {
-    //             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-    //         });
-    // }
-    
-</script> 
+    function buscarMelhorDecada() {
+        fetch(`/medidas/melhorDecada`, { cache: 'no-store' }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    plotarGrafico(resposta);
+                    spanMelhor = document.getElementById("spanMelhor");
+                    spanMelhor.innerHTML = spanMelhor;
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+</script>

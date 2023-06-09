@@ -103,7 +103,18 @@ body {
     position: static;
 }
 
+.nomeUser {
+    color: #e3dde6;
+}
 
+h3 {
+    font-size: 26px;
+}
+
+h3 span {
+    color: #ce17d4;
+    text-decoration: underline;
+}
 
 
 

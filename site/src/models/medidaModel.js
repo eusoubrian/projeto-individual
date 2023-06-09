@@ -89,8 +89,8 @@ function buscarMelhorDecada() {
         return
     }
 
-    console.log("Executando a instrução SQL: "+instrucao);
-    return database.executar(instrucao);
+    console.log("Executando a instrução SQL: " + instrucaoSql);
+    return database.executar(instrucaoSql);
 }
 
 

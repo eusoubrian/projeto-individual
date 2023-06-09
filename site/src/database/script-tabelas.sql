@@ -15,12 +15,12 @@ nome varchar(10)
 );
 
 insert into decada values
-	(null, 'anos 50'),
-	(null, 'anos 60'),
-	(null, 'anos 70'),
-	(null, 'anos 80'),
-	(null, 'anos 90'),
-	(null, 'anos 2000');
+	(null, 'anos 50'), 1
+	(null, 'anos 60'), 2
+	(null, 'anos 70'), 3
+	(null, 'anos 80'), 4
+	(null, 'anos 90'), 5
+	(null, 'anos 2000'); 6
 
 create table usuario (
 idUsuario int primary key auto_increment,
@@ -31,6 +31,21 @@ fkDecada int,
 	constraint fkDecadaUsu foreign key (fkDecada)
 		references decada(idDecada)
 );
+
+insert into usuario values	
+	(null, 'vivian', 'vivi@gmail.com', '111', 5),
+	(null, 'rayssa', 'rayssa@gmail.com', '222', 3),
+	(null, 'eduardo', 'edu@gmail.com', '111', 2),
+	(null, 'luna', 'luna@gmail.com', '222', 6),
+	(null, 'carolina', 'carol@gmail.com', '222', 6),
+	(null, 'gabs', 'perniconi@gmail.com', '111', 4),
+	(null, 'isabella', 'bella@gmail.com', '222', 6),
+	(null, 'vitor kava', 'kavabata@gmail.com', '111', 6),
+	(null, 'nicolas', 'nicolau@gmail.com', '222', 6),
+	(null, 'beatriz ferrante', 'biiiibs@gmail.com', '111', 6),
+	(null, 'andreia', 'andreia@gmail.com', '111', 4);
+
+	
 
 create table pontuacao (
 idPontuacao int primary key auto_increment,
