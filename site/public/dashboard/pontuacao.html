@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="joguinho.css">
+    <title>Pontuação</title>
+</head>
+<body onload="listarPontuacao()">
+    <div class="titulo-pont">
+        <h1>PONTUAÇÃO</h1>
+    </div>
+
+    <div id="divPontuacao"></div>
+    
+</body>
+</html>
+
+<script>
+
+    function listarPontuacao() {
+        fetch("/usuarios/listarPontuacao", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.j
+                    idUsuarioServer: idUsuario,
+                    nomeServer: nome,
+                    pontosServer: pontuacao,
+                })
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    divPontuacao.innerHTML = `${pontosServer}`
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+            return false;
+    }
+
+</script>

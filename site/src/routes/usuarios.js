@@ -24,4 +24,8 @@ router.post("/Pontuacao", function (req, res) {
     usuarioController.Pontuacao(req, res);
 });
 
+router.get("/listarPontuacao", function (req, res) {
+    usuarioController.listarPontuacao(req, res);
+});
+
 module.exports = router;

@@ -133,3 +133,13 @@ img {
   color: #ff007f;
   text-decoration: underline 2px;
 }
+
+h1 {
+  font-family: 'Anton';
+  font-size: 80px;
+}
+
+.titulo-pont {
+  display: flex;
+  justify-content: center;
+}
