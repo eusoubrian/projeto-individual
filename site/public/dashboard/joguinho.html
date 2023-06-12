@@ -44,6 +44,30 @@
 
         </section>
     </main>
+
+    <div class="titulo-pont">
+        <h1>PONTUAÇÃO</h1>
+    </div>
+
+    <div id="divPontuacao">
+        
+    </div>
+
+    <div class="tabela">
+        <div id="resultado">
+            <table id="tb-resultado">
+                <tr class="titulos-table">
+                    <td>Pontuação</td>
+                    <td>Nome</td>
+                </tr>
+                <tr>
+                    <td class="info-colunm">90</td>
+                    <td class="info-colunm">brian</td>
+                </tr>
+        
+            </table>
+        </div>
+    </div>
 </body>
 
 </html>
@@ -218,10 +242,6 @@
                     icon: 'warning',
                     confirmButtonColor: '#3085d6',
                     confirmButtonText: 'Ok, entendi'
-                    }).then((result) => {
-                        setTimeout(function () {
-                            window.location = "pontuacao.html";
-                        }, 2000);
                     })
                 } else {
                     throw ("Houve um erro ao tentar realizar o cadastro!");
