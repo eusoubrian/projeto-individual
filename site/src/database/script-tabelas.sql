@@ -52,7 +52,9 @@ idPontuacao int primary key auto_increment,
 fkUsuario int,
 	constraint fkUserPont foreign key (fkUsuario)
 		references usuario(idUsuario),
-contador int
+contador int,
+jogado int 
+	constraint chkPont check (jogado in (0, 1))
 );
 
 insert into usuario values

@@ -143,3 +143,63 @@ h1 {
   display: flex;
   justify-content: center;
 }
+
+.tabela {
+  display: flex;
+  justify-content: center;
+}
+
+#resultado {
+  display: flex;
+  justify-content: center;
+  background-color: #FFFFFF;
+  font-family: 'Oswald';
+  font-weight: 800;
+  border-radius: 15px;
+  padding: 2%;
+  width: 20%;
+}
+
+tbody {
+  display: table-row-group;
+  border-color: #58A1E4;
+}
+
+table {
+  display: table;
+  border-collapse: separate;
+  box-sizing: border-box;
+  text-indent: initial;
+  border-spacing: 0px;
+  border-color: #FFFFFF;
+}
+
+td {
+  padding: 4px 8px;
+}
+
+table .titulos-table,
+td {
+  height: 40px;
+  font-size: 30px;
+}
+
+th, td {
+  width: 10vw;    
+}
+
+.titulos-table {
+  color: #FFFFFF;
+}
+
+.titulos-table td {
+  background-color: #ff007f;
+}
+
+.titulos-table td:nth-child(1) {
+  border-radius: 8px 0 0 0;
+}
+
+.titulos-table td:nth-child(4) {
+  border-radius: 0px 8px 0 0;
+}

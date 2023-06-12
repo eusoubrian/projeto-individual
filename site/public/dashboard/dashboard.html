@@ -74,7 +74,7 @@
                     resposta.json().then(function (resposta) {
                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                         var spanMelhor = document.getElementById("spanMelhor")
-                        spanMelhor.innerHTML = `${spanMelhor}`
+                        spanMelhor.innerHTML = `${resposta[0].nome}`
                     })
                 }
             }
