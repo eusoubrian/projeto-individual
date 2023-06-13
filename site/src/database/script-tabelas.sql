@@ -45,7 +45,8 @@ insert into usuario values
 	(null, 'vitor kava', 'kavabata@gmail.com', '111', 6),
 	(null, 'nicolas', 'nicolau@gmail.com', '222', 6),
 	(null, 'beatriz ferrante', 'biiiibs@gmail.com', '111', 6),
-	(null, 'andreia', 'andreia@gmail.com', '111', 4);
+	(null, 'andreia', 'andreia@gmail.com', '111', 4),
+	(null, 'ricardo', 'ricardo@gmail.com', '111', 4);
     
 insert into usuario values
 	(null, 'Taylor', 'taytay@gmail.com', '111', 6);
