@@ -168,13 +168,15 @@
     var aleatorio = 0
 
     function posicao(lista) {
-        return parseInt(Math.random() * lista.length)
+        var aleatoriando = parseInt(Math.random() * listaImagens.length)
+        return aleatoriando
     }
 
     function sorteio() {
         aleatorio = posicao(listaImagens)
         divImagem.innerHTML = `${listaImagens[aleatorio].imagem}`
         inputNome.value = '';
+        listaImagens.splice(aleatorio, 1)
     }
 
     var pontuacao = 0
