@@ -92,10 +92,41 @@ function buscarMelhorDecada() {
     return database.executar(instrucaoSql);
 }
 
+function listarPontuacao(idUsuario) {
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `
+        select
+        usuario.nome,
+        pontuacao.contador from pontuacao join usuario
+        on fkUsuario = idUsuario
+            where idUsuario = ${idUsuario}
+            order by contador desc;
+    `;
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `select
+            usuario.nome,
+            pontuacao.contador from pontuacao join usuario
+            on fkUsuario = idUsuario
+                where idUsuario = ${idUsuario}
+                order by contador desc;
+        `;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+    console.log("Executando a instrução SQL: " + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
 
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
     buscarPontuacao,
-    buscarMelhorDecada
+    buscarMelhorDecada,
+    listarPontuacao
 }

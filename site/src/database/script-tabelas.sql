@@ -15,12 +15,12 @@ nome varchar(10)
 );
 
 insert into decada values
-	(null, 'anos 50'), 1
-	(null, 'anos 60'), 2
-	(null, 'anos 70'), 3
-	(null, 'anos 80'), 4
-	(null, 'anos 90'), 5
-	(null, 'anos 2000'); 6
+	(null, 'anos 50'),
+	(null, 'anos 60'),
+	(null, 'anos 70'),
+	(null, 'anos 80'),
+	(null, 'anos 90'),
+	(null, 'anos 2000');
 
 create table usuario (
 idUsuario int primary key auto_increment,
@@ -31,6 +31,8 @@ fkDecada int,
 	constraint fkDecadaUsu foreign key (fkDecada)
 		references decada(idDecada)
 );
+
+use mpb;
 
 insert into usuario values	
 	(null, 'vivian', 'vivi@gmail.com', '111', 5),
@@ -44,17 +46,16 @@ insert into usuario values
 	(null, 'nicolas', 'nicolau@gmail.com', '222', 6),
 	(null, 'beatriz ferrante', 'biiiibs@gmail.com', '111', 6),
 	(null, 'andreia', 'andreia@gmail.com', '111', 4);
-
-	
+    
+insert into usuario values
+	(null, 'Taylor', 'taytay@gmail.com', '111', 6);
 
 create table pontuacao (
 idPontuacao int primary key auto_increment,
 fkUsuario int,
 	constraint fkUserPont foreign key (fkUsuario)
 		references usuario(idUsuario),
-contador int,
-jogado int 
-	constraint chkPont check (jogado in (0, 1))
+contador int
 );
 
 insert into usuario values
@@ -62,21 +63,22 @@ insert into usuario values
     
 insert into pontuacao values
 	(null, 1, 5);
-    
--- SELECT PONTUACAO --
-select contador from pontuacao where fkUsuario = 1;
+  
+desc pontuacao;
+select contador from pontuacao;
 
-
--- SELECT DA KPI --
 select count(fkDecada) as voto, decada.nome from usuario
 		join decada on usuario.fkDecada = decada.idDecada
         group by decada.nome 
 		order by voto desc limit 1;
+        
+select * from pontuacao;
 
--- SELECT GRÁFICO --        
-select count(fkDecada) as voto, decada.nome from usuario
-join decada on usuario.fkDecada = decada.idDecada
-group by decada.nome;
+select 
+usuario.nome,
+pontuacao.contador from pontuacao join usuario
+	on fkUsuario = idUsuario
+		where idUsuario = 26;
     
 
 /*

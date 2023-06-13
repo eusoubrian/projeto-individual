@@ -45,23 +45,6 @@ function Pontuacao(idUsuario, pontos) {
     return database.executar(instrucao);
 }
 
-function listarPontuacao(nome ,idUsuario, pontos) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n listarPontuacao()", idUsuario, pontos);
-
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.  +9*
-    console.log(nome ,idUsuario);
-    var instrucao = `
-    select
-    idUsuario 
-    usuario.nome,
-    pontuacao.contador from pontuacao join usuario
-        on fkUsuario = idUsuario
-            where idUsuario = (${idUsuario}, ${nome}, ${pontos});
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
 
 module.exports = {
     entrar,

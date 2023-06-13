@@ -75,11 +75,29 @@ function buscarMelhorDecada(req, res) {
       .catch(function (resultado) {
         console.log("\nHouve um erro ao buscar resultados");
       })
-  }
+}
+
+function listarPontuacao(req, res) {
+    var idUsuario = req.params.idUsuario;
+    medidaModel.listarPontuacao(idUsuario)
+      .then(function (resultado) {
+        if (resultado.length > 0) {
+          console.log("e aqui")
+          res.status(200).json(resultado);
+          console.log("entramos" + resultado.length)
+        } else {
+          res.status(204).send("Nenhum resultado encontrado!")
+        }
+      })
+      .catch(function (resultado) {
+        console.log("\nHouve um erro ao buscar resultados");
+      })
+}
 
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
     buscarPontuacao,
     buscarMelhorDecada,
+    listarPontuacao
 }

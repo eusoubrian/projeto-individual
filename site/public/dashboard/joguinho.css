@@ -144,8 +144,8 @@ h1 {
   justify-content: center;
 }
 
-.tabela {
-  display: flex;
+#tabela {
+  display: none;
   justify-content: center;
 }
 

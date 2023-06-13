@@ -50,21 +50,17 @@
     </div>
 
     <div id="divPontuacao">
-        
+
     </div>
 
-    <div class="tabela">
+    <div id="tabela">
         <div id="resultado">
-            <table id="tb-resultado">
+            <table id="tb_resultado">
                 <tr class="titulos-table">
                     <td>Pontuação</td>
                     <td>Nome</td>
                 </tr>
-                <tr>
-                    <td class="info-colunm">90</td>
-                    <td class="info-colunm">brian</td>
-                </tr>
-        
+
             </table>
         </div>
     </div>
@@ -73,6 +69,7 @@
 </html>
 
 <script>
+
     var listaImagens = [
         {
             imagem: "<img class='img_legal' src='../assets/imgs/albuns/anos70/acabou_chorare_baianos.jpg'>",
@@ -161,6 +158,46 @@
         {
             imagem: "<img src='../assets/imgs/albuns/anos2000/tribalistas_jasei.webp'>",
             nome: "tribalistas"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos70/simone_pedacos.webp'>",
+            nome: "simone"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos60/caetano_veloso.jpg'>",
+            nome: "caetano veloso"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos70/adoniran_barbosa.jpg'>",
+            nome: "adoniran barbosa"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos70/clara_nunes_clara_nunes.jpg'>",
+            nome: "clara nunes"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos80/cabeca_dino_titas.jpg'>",
+            nome: "titãs"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos80/mm_marisa.jpg'>",
+            nome: "marisa monte"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos80/tempo_nao_para_cazuza.jpg'>",
+            nome: "cazuza"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos2000/no_orelha_criolo.jpg'>",
+            nome: "criolo"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos2000/papo_futuro_sapao.jpg'>",
+            nome: "mc sapão"
+        },
+        {
+            imagem: "<img src='../assets/imgs/albuns/anos70/tabua_esmeralda_jorgeBen.jpg'>",
+            nome: "jorge ben jor"
         }
 
     ]
@@ -168,15 +205,24 @@
     var aleatorio = 0
 
     function posicao(lista) {
-        var aleatoriando = parseInt(Math.random() * listaImagens.length)
-        return aleatoriando
+        return parseInt(Math.random() * listaImagens.length)
+
     }
 
     function sorteio() {
+        listaImagens.splice(aleatorio, 1)
+        if (listaImagens.length < 1) {
+            Swal.fire({
+                title: 'As imagens acabaram...',
+                text: "Responda novamente na sequência",
+                icon: 'warning',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ok, entendi'
+            })
+        }
         aleatorio = posicao(listaImagens)
         divImagem.innerHTML = `${listaImagens[aleatorio].imagem}`
         inputNome.value = '';
-        listaImagens.splice(aleatorio, 1)
     }
 
     var pontuacao = 0
@@ -214,13 +260,6 @@
                 })
                 sorteio()
             }
-            // if (pontuacao == 5) {
-            //     Swal.fire({
-            //         icon: 'success',
-            //         title: 'VOCÊ É UM MONSTRO!!!',
-            //         text: 'Você acabou de acertar 5 SEGUIDAS!!!',
-            //     })
-            // }
         } else {
             fetch("/usuarios/Pontuacao", {
                 method: "POST",
@@ -239,12 +278,13 @@
 
                 if (resposta.ok) {
                     Swal.fire({
-                    title: 'Suas tentativas acabaram!',
-                    text: "Sua pontuação está sendo armazenada...",
-                    icon: 'warning',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'Ok, entendi'
+                        title: 'Suas tentativas acabaram!',
+                        text: "Sua pontuação está sendo armazenada...",
+                        icon: 'warning',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Ok, entendi'
                     })
+                    listarPontuacao();
                 } else {
                     throw ("Houve um erro ao tentar realizar o cadastro!");
                 }
@@ -254,8 +294,37 @@
 
             return false;
         }
+    }
 
+    function listarPontuacao(idUsuario) {
+        var idUsuario = sessionStorage.ID_USUARIO;
+        fetch(`/medidas/listarPontuacao/${idUsuario}`, {
+        }).then(function (response) {
 
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    plotarPontuacao(resposta)
+                });
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+                return false;
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+    }
+
+    function plotarPontuacao(resposta) {
+        tabela.style.display = 'flex';
+        var lista = resposta;
+        console.log(lista[0].nome);
+
+        for (i = 0; i < lista.length; i++) {
+            tb_resultado.innerHTML += `
+            <td>${lista[i].contador}</td>
+            <td>${lista[i].nome}</td>`
+        }
     }
 
 

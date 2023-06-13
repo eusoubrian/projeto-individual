@@ -15,5 +15,9 @@ router.get("/melhorDecada", function (req, res) {
     medidaController.buscarMelhorDecada(req, res);
 })
 
+router.get("/listarPontuacao/:idUsuario", function (req, res) {
+    medidaController.listarPontuacao(req, res);
+});
+
 
 module.exports = router;
